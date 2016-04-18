@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+    <title>wpandveil</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/">wpandveil</a></h1>
+        </header>
+        <article class="post">
+    <h2 class="post-header">linear regression & logistic regression note</h2>
+    <p class="post-meta">2016-04-17</p>
+    <h2 id="section">0）正则化项</h2>
+
+<ul>
+  <li>L1正则化：参数绝对值的和，可以让模型稀疏</li>
+  <li>L2正则化：参数平方和然后开方</li>
+</ul>
+
+<p>正则化项的作用是防止过拟合</p>
+
+<h2 id="linear-regression">1）linear regression线性回归</h2>
+
+<p>线性回归的公式如下所示</p>
+
+<script type="math/tex; mode=display">y=w^Tx+b</script>
+
+<p>广义的线性回归的公式如下所示</p>
+
+<script type="math/tex; mode=display">y=w^Th(x)+b</script>
+
+<p>cost function或者loss function一般为均方误差，目的是使得均方误差最小</p>
+
+<script type="math/tex; mode=display">j(\theta)=\frac{1}{2}\sum_{i=1}^{m}(h_{0}(x^{(i)})-y^{(i)})^2</script>
+
+<p>w和b的解法为</p>
+
+<ul>
+  <li>最小二乘法</li>
+  <li>梯度下降</li>
+</ul>
+
+<h2 id="logistic-regression">2）logistic regression为啥叫逻辑回归</h2>
+
+<script type="math/tex; mode=display">y=\frac{1}{1+e^{-(w^Tx + b)}}</script>
+
+<script type="math/tex; mode=display">\frac{y}{1-y}</script>
+
+<script type="math/tex; mode=display">\ln\frac{y}{1-y}=w^Tx+b</script>
+
+<p>逻辑回归公式如式1所示，式2成为几率，对几率取对数，结果是线性回归
+所以逻辑回归的翻译不是很准确，应该是对数几率，logit</p>
+
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname  = 'httpwwwwpandveilxyz';
+        var disqus_identifier = '/2016/04/17/lr';
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    
+</article>
+
+    </main>
+    
+</body>
+</html>

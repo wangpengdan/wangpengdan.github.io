@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+    <title>wpandveil</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/">wpandveil</a></h1>
+        </header>
+        <article class="post">
+    <h2 class="post-header">常用shell命令</h2>
+    <p class="post-meta">2016-03-31</p>
+    <p><strong>1，在所有cc为后缀的文件里面查找str</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>find . -name <span class="s2">"*.cc"</span> | xargs grep str
+</code></pre>
+</div>
+
+<p>与以下命令效果一样，只不过是用了xargs。它的作用是将参数列表转换成小块分段传递给其他命令，以避免参数列表过长的问题。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>grep str <span class="sb">`</span>find . -name <span class="s2">"*.cc"</span><span class="sb">`</span>
+</code></pre>
+</div>
+
+<p><strong>2，获取某一个进程pid的运行路径</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>readlink /proc/&lt;pid&gt;/cwd
+</code></pre>
+</div>
+
+<p><strong>3，多行注释</strong></p>
+
+<p>linux shell的单行注释为</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># 我是注释</span>
+<span class="c"># 我也是注释</span>
+<span class="nb">echo</span> <span class="s2">"i am code"</span>
+</code></pre>
+</div>
+
+<p>但是当需要注释的行数比较多的时候，在每行的行首新增#太麻烦，这个时候就需要多行注释了，包括以下两种形式</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>: <span class="sh">&lt;&lt;'END'
+我是注释
+我也是注释
+END
+</span><span class="nb">echo</span> <span class="s2">"i am code"</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>: <span class="s1">'
+我是注释
+我也是注释
+'</span>
+<span class="nb">echo</span> <span class="s2">"i am code"</span>
+</code></pre>
+</div>
+
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname  = 'httpwwwwpandveilxyz';
+        var disqus_identifier = '/2016/03/31/shell-cmd';
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    
+</article>
+
+    </main>
+    
+</body>
+</html>
