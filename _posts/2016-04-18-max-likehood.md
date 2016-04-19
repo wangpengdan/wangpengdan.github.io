@@ -14,4 +14,5 @@ $$ lik(\theta) = \prod_{x \in D_{c}}f_{D}(x_{1}, x_{2}, x_{3}|\theta) \tag{2} $$
 为了预估$\theta$的值，可以用$D_c$数据，即使得取到$D_c$概率最大的 $ \theta $ 即为实际$\theta$的值。如式2所示，式2即为似然函数。预估$\theta$即为使得式2取最大值。
 
 将似然函数转换成相加的形式比较好求解。即为
+
 $$ log(lik(\theta)) = \sum_{i=0}^{c}log(f_{D}(x_1,x_2,x_3|\theta)) $$
