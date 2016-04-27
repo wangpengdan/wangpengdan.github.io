@@ -1,7 +1,7 @@
 ---
 layout: post
 title: machine learning basics
-date: 2016-04-26 12:00:00
+date: 2016-04-25 12:00:00
 ---
 ## **5.2，复杂度、过拟合和欠拟合**
 
