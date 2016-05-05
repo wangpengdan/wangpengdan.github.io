@@ -66,3 +66,5 @@ date: 2016-04-25 12:00:00
 频率主义学派觉得参数$\theta$是固定值但是未知，贝叶斯学派觉得参数$\theta$是随机变量且符合某种分布
 
 ### **5.6.1，最大后验概率估计**
+
+$ \theta_{MAP} = \mathop{\arg\,\max}\limits_\theta p(\theta|x) = \mathop{\arg\,\max}\limits_\theta \log p(x|\theta) + \log p(\theta) $
