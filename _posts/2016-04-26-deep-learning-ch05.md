@@ -3,6 +3,10 @@ layout: post
 title: deep learning ch05.machine learning basics
 date: 2016-04-25 12:00:00
 ---
+> 本博文是Ian Goodfellow, Yoshua Bengio and Aaron Courville写的deep learning的个人读书笔记  
+> 原书地址：[deep learning](http://www.deeplearningbook.org/)  
+> 第五章地址：[machine learning basics](http://www.deeplearningbook.org/contents/ml.html)
+
 ## **5.2，复杂度、过拟合和欠拟合**
 
 机器学习有别于优化问题的地方在于，优化问题是直接在已知数据上优化，机器学习是在已知数据上（训练数据）优化未知数据（测试数据）的效果
@@ -68,3 +72,11 @@ date: 2016-04-25 12:00:00
 ### **5.6.1，最大后验概率估计**
 
 $$ \theta_{MAP} = \mathop{\arg\,\max}\limits_\theta p(\theta|x) = \mathop{\arg\,\max}\limits_\theta \log p(x|\theta) + \log p(\theta) $$
+
+## **5.7，有监督学习算法**
+
+有监督学习即知道label
+
+### **5.7.1，概率有监督学习**
+
+本书中大多数的有监督学习算法是基于估计$p(y|x)$，可以用最大似然估计去求出使得$p(y|x;\theta)$最好的参数$\theta$
