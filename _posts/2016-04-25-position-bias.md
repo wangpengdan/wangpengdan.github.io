@@ -3,6 +3,7 @@ layout: post
 title: position bias
 date: 2016-04-25 12:00:00
 ---
+doing
 ### **COEC Model**
 
 |  位置 | 展现 | 点击 | CTR  | position bias |
