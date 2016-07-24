@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+    <title>wpandveil</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/">wpandveil</a></h1>
+        </header>
+        <article class="post">
+    <h2 class="post-header">PRML读书笔记：linear models for regression</h2>
+    <p class="post-meta">2016-04-18</p>
+    <h3 id="section"><strong>3,回归的线性模型</strong></h3>
+
+<h4 id="section-1"><strong>3.1,线性基函数模型</strong></h4>
+
+<script type="math/tex; mode=display">y(X, W) = \sum_{j=0}^{M-1}w_{j}\phi_{j}(X) = W^T\phi(X) \tag{3.1}</script>
+
+<script type="math/tex; mode=display">\phi_{j}(X) \tag{3.2}</script>
+
+<p>式3.2为<strong>基函数</strong>，若基函数为非线性的话，式3.1可以表示为X的非线性。但是由于在$ W $上线性，3.1依然为线性模型。</p>
+
+<script type="math/tex; mode=display">\phi_{j}(x) = e^{-\frac{(x - \mu_{j})^2}{2s^2}} \tag{3.3}</script>
+
+<script type="math/tex; mode=display">\phi_{j}(x) = \delta(\frac{x - \mu_{j}}{s}) \tag{3.4}</script>
+
+<p>常见的基函数的形式有多项式、式3.3的高斯函数、式3.4的sigmoid函数等</p>
+
+<h4 id="section-2"><strong>3.1.1,最大似然与最小平方</strong></h4>
+
+<blockquote>
+  <p>最小平方的误差函数可以看成高斯噪声模型的假设下的最大似然解。</p>
+</blockquote>
+
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname  = 'httpwwwwpandveilxyz';
+        var disqus_identifier = '/2016/04/18/prml-note-ch03';
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    
+</article>
+
+    </main>
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-41999243-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+</body>
+</html>
