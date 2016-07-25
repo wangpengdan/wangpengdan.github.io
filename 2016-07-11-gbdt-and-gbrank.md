@@ -11,7 +11,7 @@ date: 2016-07-10 12:00:00
 ## GBDT
 GBDT(gradient boosting decision tree)从名称可知是基于decision tree和梯度建立的boosting机器学习算法。
 
-### `原理`
+### 原理
 
 以回归问题为例，定义损失函数为MSE，即为:
 
