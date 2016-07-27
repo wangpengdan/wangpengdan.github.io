@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+    <title>wpandveil</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/">wpandveil</a></h1>
+        </header>
+        <article class="post">
+    <h2 class="post-header">gbdt和gbrank笔记</h2>
+    <p class="post-meta">2016-07-10</p>
+    <blockquote>
+  <p>gbdt和gbrank是在decision tree基础上建立的用于分类和回归的机器学习算法，gbdt和gbrank属于<strong>boosting算法</strong>，即由一堆弱模型组合而成的强的模型。gbdt和gbrank的区别在于，gbdt是pointwise的，具有<strong>点回归</strong>性质，而gbrank是pairwise的，不具有点回归性质。<br />
+本文主要参考：<br />
+1)<a href="http://www.cc.gatech.edu/~zha/papers/fp086-zheng.pdf">A regression framework for learning ranking functions using relative relevance judgments</a><br />
+2)<a href="https://en.wikipedia.org/wiki/Gradient_boosting">Gradient boosting</a></p>
+</blockquote>
+
+<h2 id="gbdt">GBDT</h2>
+<p>GBDT(gradient boosting decision tree)从名称可知是基于decision tree和梯度建立的boosting机器学习算法。</p>
+
+<h3 id="section">原理</h3>
+<p>以回归问题为例，定义损失函数为最小均方误差MSE，即为:</p>
+
+<script type="math/tex; mode=display">\mathop{min}\limits_{h\in H}L(h) = \mathop{min}\limits_{h\in H}\sum_{i=1}^{n}(g_i - h(x_i))^2</script>
+
+<p>可以使用梯度下降的方法来求解$L(h)$:</p>
+
+<script type="math/tex; mode=display">h_{k+1}(x) = h_k(x) - \alpha_{k}\triangledown L(h_k(x))</script>
+
+<p>对单一的$x_i$求$\triangledown L(h_k(x_i))$为:</p>
+
+<script type="math/tex; mode=display">\triangledown L(h_k(x_i)) = -(g_i - h_k(x_i))</script>
+
+<p><code class="highlighter-rouge">gbdt</code>的学习过程直观来说是每一次拟合最终结果与学习到的模型的残差学习一颗新的子树，最终所有子数加和即为最终模型。由以上式子对gbdt的解释为：$h_k(x)$模型的效果还不够好的情况下，需要进一步优化模型，这里的做法并不是直接去优化$h_k(x)$，而是基于使用$g_i - h_k(x_i)$的<strong>残差</strong>去学习一个新的决策树，以此类推。这样做刚好保证学习过程是沿着梯度下降的方向进行的，保证了可以收敛。<br />
+一个简单的例子为：假如有一堆训练数据，label值为年龄，其中一个训练数据的label值为18岁，训练第一棵树的得到的年龄是16，即用18-16=2训练第二棵树，最终第二棵树得到的年龄为2.5，则用2-2.5=-0.5训练第三棵树，最终第三棵树得到的年龄是-0.3。GBDT到第三棵树训练结束的话，实际年龄是18岁，模型得到的年龄是16+2.5-0.3=18.2岁。</p>
+
+<h3 id="section-1">算法</h3>
+<p>算法的步骤为：<br />
+1)初始化第一棵子树为常数，这里初始化为$h_0(x)=\sum_{i=1}^ny_i/N$，N为训练数据的数量  <br />
+2)循环$k\in\lbrace1…M\rbrace$，M为树的棵树 <br />
+a)对于每一个训练数据i，计算负梯度$g_i - h_k(x_i)$<br />
+b)使用残差学习一棵回归树$\sum_{j=1}^{J_k} \gamma_{jk}I(x \in R_{jk})$ <br />
+c)$h_{k}(x) = h_{k-1}(x) + \eta \sum_{j=1}^{J_k} \gamma_{jk}I(x \in R_{jk})$，$\eta$为学习率。</p>
+
+<h2 id="gbrank">GBRANK</h2>
+<p>GBRANK与GBDT的不同点为：gbrank是pairwise的，gbdt是pointwise的。所以GBRANK模型训练是需要组pair的。
+### 原理
+用$
+### 算法</p>
+
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname  = 'httpwwwwpandveilxyz';
+        var disqus_identifier = '';
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    
+</article>
+
+    </main>
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-41999243-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+</body>
+</html>

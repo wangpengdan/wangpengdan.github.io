@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> 
+    <title>wpandveil</title>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <h1 class="site-title"><a href="/">wpandveil</a></h1>
+        </header>
+        <article class="post">
+    <h2 class="post-header">deep learning ch05.machine learning basics</h2>
+    <p class="post-meta">2016-04-25</p>
+    <blockquote>
+  <p>本博文是Ian Goodfellow, Yoshua Bengio and Aaron Courville写的deep learning的个人读书笔记<br />
+原书地址：<a href="http://www.deeplearningbook.org/">deep learning</a><br />
+第五章地址：<a href="http://www.deeplearningbook.org/contents/ml.html">machine learning basics</a></p>
+</blockquote>
+
+<h2 id="section"><strong>5.2，复杂度、过拟合和欠拟合</strong></h2>
+
+<p>机器学习有别于优化问题的地方在于，优化问题是直接在已知数据上优化，机器学习是在已知数据上（训练数据）优化未知数据（测试数据）的效果</p>
+
+<p>之所以能在已知数据上优化未知数据的效果，是由于建立在测试数据和训练数据同分布的假设上的</p>
+
+<p>机器学习算法的复杂度（capacity）不一样，会导致模型过拟合或者欠拟合</p>
+
+<p>有多种方式可以改变机器学习算法的复杂度（capacity）</p>
+
+<ul>
+  <li>表示复杂度：模型的选择</li>
+  <li>有效复杂度：优化函数的选择</li>
+</ul>
+
+<h3 id="section-1"><strong>5.2.1，没有免费的午餐理论</strong></h3>
+
+<blockquote>
+  <p>没有银弹。即没有在所有领域、所有数据集上都表现很好的机器学习算法</p>
+</blockquote>
+
+<h3 id="section-2"><strong>5.2.2，正则化</strong></h3>
+
+<p>使用正则化方法在<code class="highlighter-rouge">拟合训练数据</code>和<code class="highlighter-rouge">模型复杂度</code>中取一个折中</p>
+
+<h2 id="section-3"><strong>5.3，超参和交叉验证</strong></h2>
+
+<p>超参：模型学习中我们可以改变的值，比如学习率</p>
+
+<p>超参一般都是人为确定而不是通过学习得到的，因为如果通过学习得到的话，模型总倾向于得到一个复杂度最高的模型，这样会导致<strong>过拟合</strong></p>
+
+<p>为了解决自己手动调参带来的过拟合问题，可以引入<strong>交叉验证</strong>的方法</p>
+
+<h2 id="bias"><strong>5.4，估计、偏差（bias）和方差</strong></h2>
+
+<p>数学知识</p>
+
+<h2 id="section-4"><strong>5.5，最大似然估计</strong></h2>
+
+<p>最大似然估计是为不同的模型派生好的估计函数的准则，即理论支撑</p>
+
+<p>最大似然的通俗解释：若一个分布是未知的，但是知道从这个分布中选出的N个样本，则使得这N个样本被选出概率最大的分布即为要估计的未知分布</p>
+
+<p>似然函数可以通过两边取log化乘为加</p>
+
+<p>解释最大似然的一种方法是通过相对熵（KL divergence）</p>
+
+<h3 id="log"><strong>5.5.1，条件log最大似然以及均方误差</strong></h3>
+
+<blockquote>
+  <p>均方误差函数可以看成高斯噪声模型的假设下的最大似然解。</p>
+</blockquote>
+
+<h3 id="section-5"><strong>5.5.2，最大似然的特性</strong></h3>
+
+<p>在一定的条件下，最大似然有<strong>一致性</strong>的特性：随着数据量增大，最大似然估计的结果是向真实结果收敛的。</p>
+
+<ul>
+  <li>真实的分布是已知的传统分布</li>
+  <li>分布是由一个参数决定的</li>
+</ul>
+
+<p>一致性带来的好处体现在Statistical efficiency上，即可以用更少的数据取得一样的泛化错误率，等效的说是可以用一样的数据取得更小的泛化错误率</p>
+
+<h2 id="section-6"><strong>5.6，贝叶斯统计</strong></h2>
+
+<p>最大似然函数属于频率主义学派，下面要讲的是贝叶斯学派</p>
+
+<p>频率主义学派觉得参数$\theta$是固定值但是未知，贝叶斯学派觉得参数$\theta$是随机变量且符合某种分布</p>
+
+<h3 id="section-7"><strong>5.6.1，最大后验概率估计</strong></h3>
+
+<script type="math/tex; mode=display">\theta_{MAP} = \mathop{\arg\,\max}\limits_\theta p(\theta|x) = \mathop{\arg\,\max}\limits_\theta \log p(x|\theta) + \log p(\theta)</script>
+
+<h2 id="section-8"><strong>5.7，有监督学习算法</strong></h2>
+
+<p>有监督学习即知道label</p>
+
+<h3 id="section-9"><strong>5.7.1，概率有监督学习</strong></h3>
+<p>本书中大多数的有监督学习算法是基于估计$p(y|x)$，可以用最大似然估计去求出使得$p(y|x;\theta)$最好的参数$\theta$</p>
+
+    
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname  = 'httpwwwwpandveilxyz';
+        var disqus_identifier = '';
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    
+</article>
+
+    </main>
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-41999243-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+</body>
+</html>

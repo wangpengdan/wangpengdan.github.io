@@ -25,19 +25,19 @@
     <p class="post-meta">2016-03-31</p>
     <p><strong>1，在所有cc为后缀的文件里面查找str</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>find . -name <span class="s2">"*.cc"</span> | xargs grep str
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>find . -name <span class="s2">"*.cc"</span> | xargs grep str
 </code></pre>
 </div>
 
 <p>与以下命令效果一样，只不过是用了xargs。它的作用是将参数列表转换成小块分段传递给其他命令，以避免参数列表过长的问题。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grep str <span class="sb">`</span>find . -name <span class="s2">"*.cc"</span><span class="sb">`</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>grep str <span class="sb">`</span>find . -name <span class="s2">"*.cc"</span><span class="sb">`</span>
 </code></pre>
 </div>
 
 <p><strong>2，获取某一个进程pid的运行路径</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>readlink /proc/&lt;pid&gt;/cwd
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>readlink /proc/&lt;pid&gt;/cwd
 </code></pre>
 </div>
 
@@ -45,7 +45,7 @@
 
 <p>linux shell的单行注释为</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># 我是注释</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 我是注释</span>
 <span class="c"># 我也是注释</span>
 <span class="nb">echo</span> <span class="s2">"i am code"</span>
 </code></pre>
@@ -53,7 +53,7 @@
 
 <p>但是当需要注释的行数比较多的时候，在每行的行首新增#太麻烦，这个时候就需要多行注释了，包括以下两种形式</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>: <span class="sh">&lt;&lt;'END'
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>: <span class="sh">&lt;&lt;'END'
 我是注释
 我也是注释
 END
@@ -61,7 +61,7 @@ END
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>: <span class="s1">'
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>: <span class="s1">'
 我是注释
 我也是注释
 '</span>
